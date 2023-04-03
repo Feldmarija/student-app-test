@@ -7,18 +7,18 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.DriverManager;
 
 import java.awt.print.PageFormat;
 import java.time.Duration;
 
 public class AllStudentsPage {
-    private WebDriver driver;
-   private WebDriverWait webDriverWait;
+    private final WebDriver driver = DriverManager.getInstance();
+   private final WebDriverWait webDriverWait;
 
-    public AllStudentsPage(WebDriver driver) {
-        this.driver = driver;
+    public AllStudentsPage() {
         PageFactory.initElements(driver, this);
-        this.webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        this.webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
     @FindBy(how = How.XPATH, using = "//div[@class='ant-table-title']//button")
     public WebElement addStudentButton;
